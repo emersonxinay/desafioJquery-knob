@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Xinayy</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+
+    <script>
+      function writeCode(){
+        var code = $('#param_r').val()+','+$('#param_g').val()+','+$('#param_b').val();
+        $("#code").html(code);
+        $("#code").css('background-color', 'rgb('+code+')');
+
+      }
+      $(function(){
+        $(".dial").knob({
+          'min':0,
+          'max':255,
+          'change': function() { writeCode()}
+        });
+      });
+
+    </script>
+
+  </body>
+</html>
